@@ -1,6 +1,6 @@
 {
     "name": "magichome-led-node",
-    "version": "0.9.1",
+    "version": "1.0.0",
     "description": "Magichome LED controller for node-red",
     "dependencies": {
         "tuyapi": "3.0.1"
