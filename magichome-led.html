@@ -1,6 +1,6 @@
 <script type="text/javascript">
-    RED.nodes.registerType('magichome-led-node', {
-        category: 'output',
+    RED.nodes.registerType('magichome-led', {
+        category: 'Smarthome',
         color: '#FFFF00',
         defaults: {
             name: {
@@ -15,7 +15,7 @@
                 validate: RED.validators.regex(/\S{16}/)
             },
             ip: {
-                value: "127.0.0.1",
+                value: "0.0.0.0",
                 validate: RED.validators.regex(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/)
             }
         },
@@ -29,7 +29,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="magichome-led-node">
+<script type="text/x-red" data-template-name="magichome-led">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Led Controller">
@@ -48,21 +48,21 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="magichome-led-node">
+<script type="text/x-red" data-help-name="magichome-led">
     <p>A simple node that communicates with a Magichome RGB LED Controller on the Local Network</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload
             <span class="property-type">string | bool</span>
         </dt>
-        <dd> The input can either be a color string or a bool to switch on/off</dd>
+        <dd> The input can either be a color hex string (RRGGBB) or a bool to switch on/off</dd>
     </dl>
     <h3>Details</h3>
-    <p><code>msg.payload</code> can either be the color information in the form of a 3 Byte string containing RRGGBB values. This can be produced by the color-picker from the node-red-dashboard.</p>
+    <p><code>msg.payload</code> can either be the color information in the form of a 3 Byte string containing RRGGBB hex values (e.g. FFFF00 for orange). This can be produced by the color-picker from the node-red-dashboard which needs its output format set to hex.</p>
     <p>The other option is to use a bool as input to switch the led ON or OFF. This can e.g. come from a button from the node-red-dashboard or any other source with a boolean output.</p>
     <p>The node needs the following options entered correctly in the node configuration to work:<br/>
-        <code>ID</code>,<code>Key</code> and <code>IP-Address</code> of the LED controller. <br/> These values can be obtained by following the instruction given
-        <a href="https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md">here</a>. After linking the device, it will have a local IP-Adress in your network which also needs to be entered in the configuration options.</p>
+        <code>ID</code>,<code>Key</code> and <code>IP-Address</code>(optional) of the LED controller. <br/> These values can be obtained by following the instruction given
+        <a href="https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md">here</a>. After linking the device, it will have a IP-Address in your local Wifi. If <code>0.0.0.0</code> is used in the configuration, the IP-Adress will be discovered by the api.</p>
     <h3>References</h3>
     <ul>
         <li><a href="https://github.com/codetheweb/tuyapi">Tuyapi</a> - API to interface with tuya devices</li>

@@ -1,16 +1,22 @@
 {
-    "name": "magichome-led-node",
-    "version": "0.9.0",
-    "description": "Magichome LED controller node for node-red",
+    "name": "magichome-led",
+    "version": "1.0.0",
+    "description": "Magichome LED controller for node-red",
     "dependencies": {
         "tuyapi": "3.0.1"
     },
     "node-red": {
         "nodes": {
-            "magichome-led-node": "magichome-led.js"
+            "magichome-led": "magichome-led.js"
         }
     },
-    "keywords": ["node-red", "magichome", "led", "controller", "tuya"],
+    "keywords": [
+        "node-red",
+        "magichome",
+        "led",
+        "controller",
+        "tuya"
+    ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
