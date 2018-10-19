@@ -23,7 +23,7 @@ module.exports = function (RED) {
         //link tuya api
         const TuyaDevice = require('tuyapi');
         //and create new device
-        tuya = new TuyaDevice(tuyacfg);
+        var tuya = new TuyaDevice(tuyacfg);
         console.log("MagicHome Led Node Created");
 
         // function to try to discover the controllers IP
