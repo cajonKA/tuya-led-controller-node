@@ -67,6 +67,17 @@ module.exports = function (RED) {
             console.log('MagicHome Led Node Closed');
         });
 
+	// There are two modes: white && colour. Since this node currently only supports
+	// colored, hard-code the mode to be "colour" at initialization.
+        tuya.set({ dps: 2, set: "colour" })
+            .then(status => {
+                this.status({ fill: "green", shape: "dot", text: "connected" });
+            })
+            .catch(error => {
+                console.log(error);
+                this.status({ fill: "red", shape: "ring", text: "no connection" });
+            })
+
         //handle input from either a node red dashboard color picker
         //or a button 
         node.on('input', function (msg) {
