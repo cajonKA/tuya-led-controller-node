@@ -67,17 +67,6 @@ module.exports = function (RED) {
             console.log('MagicHome Led Node Closed');
         });
 
-	// There are two modes: white && colour. Since this node currently only supports
-	// colored, hard-code the mode to be "colour" at initialization.
-        tuya.set({ dps: 2, set: "colour" })
-            .then(status => {
-                this.status({ fill: "green", shape: "dot", text: "connected" });
-            })
-            .catch(error => {
-                console.log(error);
-                this.status({ fill: "red", shape: "ring", text: "no connection" });
-            })
-
         //handle input from either a node red dashboard color picker
         //or a button 
         node.on('input', function (msg) {
@@ -105,10 +94,11 @@ module.exports = function (RED) {
                 default:
                     console.log("Error: Wrong Input Value (must be Bool or String)");
             }
-            // If we are about to set a color, some devices have a specific white mode. If we
-            // are setting the color to white, then change the mode accordingly. And vice-versa.
+            // If we are about to set a color, set the color mode to white to colour.
+            // Some devices have a specific white mode. To accomodate these devices, if we are
+            // setting the color to white, then change to white mode, and vice-versa.
             // For the documented modes, checkout the python tuya interface:
-            //  https://github.com/clach04/python-tuya/blob/master/pytuya/__init__.py#L343
+            // https://github.com/clach04/python-tuya/blob/master/pytuya/__init__.py#L343
 	        if (dps == 5)
             {
                 if (msg.payload == "FFFFFF")
