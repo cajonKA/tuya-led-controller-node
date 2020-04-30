@@ -1,5 +1,5 @@
 // set : takes a string in the form rrggbb and converts it
-//       to a hexvalue needed for dps 5 of the Magichome Led controller
+//       to a hexvalue needed for dps 5 of the Tuya Led controller
 //       The form of the string must be RRGGBB0HHHSSVV
 exports.set = function(rgbString) {
     //split the string into pieces of 2 and put them in the rgb array
