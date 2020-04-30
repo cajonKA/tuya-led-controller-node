@@ -1,18 +1,17 @@
 {
-    "name": "magichome-led-node",
-    "version": "1.0.1",
-    "description": "Magichome LED controller for node-red",
+    "name": "tuya-led-node",
+    "version": "1.0.0",
+    "description": "Tuya LED controller for node-red",
     "dependencies": {
         "tuyapi": "3.0.1"
     },
     "node-red": {
         "nodes": {
-            "magichome-led": "magichome-led.js"
+            "tuya-led": "tuya-led.js"
         }
     },
     "keywords": [
         "node-red",
-        "magichome",
         "led",
         "controller",
         "tuya"
@@ -23,7 +22,7 @@
     "author": "cajonKA",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/cajonKA/magichome-led-controller-node.git"
+        "url": "git+https://github.com/cajonKA/tuya-led-controller-node.git"
     },
     "license": "Apache-2.0"
 }
