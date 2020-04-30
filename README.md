@@ -1,8 +1,9 @@
-# magichome-led-controller-node
-This is a node-red node to control RGB Led Controllers by MagicHome (and maybe other brands working based on the tuya cloud)
+# tuya-led-controller-node
+This is a node-red node to control RGB Led Controllers based on the tuya cloud
 which can be bought from different sources on the Internet.
 
-This node is working on the <b>local network</b>, Internet is only needed to link the Led Controller and obtain the id and key.
+This node is working on the <b>local network</b>, 
+Internet is only needed to link the Led Controller and obtain the id and key.
 
 ## Usage
 To use this node, you have to obtain the device ID and the localkey of your LED controller by following
