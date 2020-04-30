@@ -1,0 +1,71 @@
+<script type="text/javascript">
+    RED.nodes.registerType('tuya-led', {
+        category: 'Smarthome',
+        color: '#FFFF00',
+        defaults: {
+            name: {
+                value: "Led Controller"
+            },
+            deviceid: {
+                value: "xxxxxxxxxxxxxxxxxxxx",
+                validate: RED.validators.regex(/\S{20}/)
+            },
+            key: {
+                value: "xxxxxxxxxxxxxxxx",
+                validate: RED.validators.regex(/\S{16}/)
+            },
+            ip: {
+                value: "0.0.0.0",
+                validate: RED.validators.regex(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/)
+            }
+        },
+        inputs: 1,
+        outputs: 0,
+        align: "right",
+        icon: "light.png",
+        label: function() {
+            return this.name || "tuya-led";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="tuya-led">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Led Controller">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deviceid"><i class="fa fa-tag"></i> ID</label>
+        <input type="text" id="node-input-deviceid" placeholder="Id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-key"><i class="fa fa-tag"></i> Key</label>
+        <input type="text" id="node-input-key" placeholder="Key">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ip"><i class="fa fa-tag"></i> IP Adress</label>
+        <input type="text" id="node-input-ip" placeholder="IP Adress">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="magichome-led">
+    <p>A simple node that communicates with a Tuya RGB LED Controller on the Local Network</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">string | bool</span>
+        </dt>
+        <dd> The input can either be a color hex string (RRGGBB) or a bool to switch on/off</dd>
+    </dl>
+    <h3>Details</h3>
+    <p><code>msg.payload</code> can either be the color information in the form of a 3 Byte string containing RRGGBB hex values (e.g. FFFF00 for orange). This can be produced by the color-picker from the node-red-dashboard which needs its output format set to hex.</p>
+    <p>The other option is to use a bool as input to switch the led ON or OFF. This can e.g. come from a button from the node-red-dashboard or any other source with a boolean output.</p>
+    <p>The node needs the following options entered correctly in the node configuration to work:<br/>
+        <code>ID</code>,<code>Key</code> and <code>IP-Address</code>(optional) of the LED controller. <br/> These values can be obtained by following the instruction given
+        <a href="https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md">here</a>. After linking the device, it will have a IP-Address in your local Wifi. If <code>0.0.0.0</code> is used in the configuration, the IP-Adress will be discovered by the api.</p>
+    <h3>References</h3>
+    <ul>
+        <li><a href="https://github.com/codetheweb/tuyapi">Tuyapi</a> - API to interface with tuya devices</li>
+        <li><a href="https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md">Instructions</a> - how to get device id and localKey</li>
+    </ul>
+</script>
